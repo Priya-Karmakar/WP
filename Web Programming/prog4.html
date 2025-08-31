@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animated Balls</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: darkslategrey;
+      }
+
+      .ball {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 100%;
+        border-radius: 50%;
+        /* box-shadow: 0 0 15px rgba(255, 255, 255, 0.062); */
+      }
+
+      @keyframes moveleft {
+        from {
+          left: 100%;
+        }
+        to {
+          left: -60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      id="layer1"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.YYj_AF87l0fP7Die3ONsUAHaEK?w=304&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+      alt="Ball1"
+    />
+    <img
+      id="layer2"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.l-V_GLBJu5jz4o0DWGnsrQHaEK?w=304&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+      alt="Ball2"
+    />
+    <img
+      id="layer3"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.Q6F1QZahj8-_5TwzKKRoSwHaHw?w=164&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+      alt="Ball3"
+    />
+    <img
+      id="layer4"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.Pa24HWpB8cM-H8UEYSEN9AHaHa?w=180&h=180&c=7&r=0&o=5&pid=1.7"
+      alt="Ball4"
+    />
+    <img
+      id="layer5"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.-BwjicRrfqoHbPfMQyOxwQHaHa?w=171&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+      alt="Ball5"
+    />
+    <img
+      id="layer6"
+      class="ball"
+      src="https://th.bing.com/th/id/OIP.RNhApZWAbkgW6bJ9wfWlcAHaH2?w=157&h=180&c=7&r=0&o=5&pid=1.7"
+      alt="Ball6"
+    />
+
+    <script>
+      function animateBall(layer) {
+        const ball = document.getElementById(layer);
+        const duration = Math.random() * 5 + 4; // Between 4s and 9s
+        const delay = Math.random() * 3; // Up to 3s delay
+        const topPos = Math.random() * (window.innerHeight - 150); // Keep it in bounds
+
+        ball.style.top = topPos + "px";
+        ball.style.animation = `moveleft ${duration}s linear infinite`;
+        // ball.style.animationDelay = ${delay}s;
+      }
+
+      const layers = [
+        "layer1",
+        "layer2",
+        "layer3",
+        "layer4",
+        "layer5",
+        "layer6",
+      ];
+      layers.forEach(animateBall);
+    </script>
+  </body>
+</html>

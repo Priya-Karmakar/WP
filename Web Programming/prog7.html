@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U03ZH23S0107</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        margin: 0;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="employeeForm">
+        <h2>Employee Information</h2>
+
+        <label for="basic">Basic Salary:</label>
+        <input type="number" id="basic" name="basic" required />
+
+        <label for="da">Dearness Allowance (in %):</label>
+        <input type="number" id="da" name="da" required />
+
+        <label for="hra">House Rent Allowance (in %):</label>
+        <input type="number" id="hra" name="hra" required />
+
+        <label for="pf">Provident Fund (in %):</label>
+        <input type="number" id="pf" name="pf" required />
+
+        <label for="tax">Tax (in %):</label>
+        <input type="number" id="tax" name="tax" required />
+
+        <button type="button" onclick="calculatePay()">Calculate</button>
+      </form>
+    </div>
+
+    <script>
+      function calculatePay() {
+        var basic = parseFloat(document.getElementById("basic").value);
+        var daPercent = parseFloat(document.getElementById("da").value);
+        var hraPercent = parseFloat(document.getElementById("hra").value);
+        var pfPercent = parseFloat(document.getElementById("pf").value);
+        var taxPercent = parseFloat(document.getElementById("tax").value);
+
+        if (
+          isNaN(basic) ||
+          isNaN(daPercent) ||
+          isNaN(hraPercent) ||
+          isNaN(pfPercent) ||
+          isNaN(taxPercent)
+        ) {
+          alert("Please enter all values correctly.");
+          return;
+        }
+
+        var daAmount = (daPercent / 100) * basic;
+        var hraAmount = (hraPercent / 100) * basic;
+
+        var pfAmount = (pfPercent / 100) * (basic + daAmount + hraAmount);
+        var taxAmount = (taxPercent / 100) * (basic + daAmount + hraAmount);
+
+        var grossPay = basic + daAmount + hraAmount;
+        var totalDeduction = pfAmount + taxAmount;
+        var netPay = grossPay - totalDeduction;
+
+        var resultMessage =
+          "Gross Pay: ₹" +
+          grossPay.toFixed(2) +
+          "\nDA Amount: ₹" +
+          daAmount.toFixed(2) +
+          "\nHRA Amount: ₹" +
+          hraAmount.toFixed(2) +
+          "\nPF Amount: ₹" +
+          pfAmount.toFixed(2) +
+          "\nTax Amount: ₹" +
+          taxAmount.toFixed(2) +
+          "\nTotal Deduction: ₹" +
+          totalDeduction.toFixed(2) +
+          "\nNet Pay: ₹" +
+          netPay.toFixed(2);
+
+        alert(resultMessage);
+      }
+    </script>
+  </body>
+</html>

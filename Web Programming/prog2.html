@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arithmetic Operations</title>
+  </head>
+  <body>
+    <div
+      id="container"
+      style="
+        border-radius: 10px;
+        height: 350px;
+        width: 500px;
+        margin-left: 500px;
+        background-color: #d9eafd;
+        text-align: center;
+      "
+    >
+      <h1 style="font-size: 1.3rem; padding-top: 5%">ARITHMETIC OPERATIONS</h1>
+      <br /><br />
+
+      <label for="num1" style="font-size: 1.3rem">Enter number 1</label>
+      <input id="num1" type="number" /><br /><br />
+
+      <label for="num2" style="font-size: 1.3rem">Enter number 2</label>
+      <input id="num2" type="number" /><br /><br />
+
+      <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*"></option>
+        <option value="/">/</option>
+      </select>
+
+      <button id="calculateBtn" onclick="opertion()">CALCULATE</button>
+
+      <p id="result" style="font-size: 2rem"></p>
+    </div>
+
+    <script>
+      function opertion() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const operator = document.getElementById("operator").value;
+        let result;
+
+        if (operator === "+") {
+          result = num1 + num2;
+        } else if (operator === "-") {
+          result = num1 - num2;
+        } else if (operator === "*") {
+          result = num1 * num2;
+        } else if (operator === "/") {
+          if (num2 !== 0) {
+            result = num1 / num2;
+          } else {
+            result = "Error: Division by zero";
+          }
+        } else {
+          result = "Invalid operator";
+        }
+
+        document.getElementById("result").textContent = `Result: ${result}`;
+      }
+    </script>
+  </body>
+</html>
