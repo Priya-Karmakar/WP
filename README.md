@@ -1,1 +1,1 @@
-# WP
+Basic html pages 
